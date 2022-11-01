@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { actionFetchCurrencyn, saveExpenses } from '../redux/actions';
 import getCurrencyList from '../services/currencyAPI';
 
-class WalletForm extends Component {
+class EditForm extends Component {
   constructor() {
     super();
     this.state = {
@@ -60,7 +60,7 @@ class WalletForm extends Component {
     const { currencies, editor } = this.props;
     const { value, description, currency, method, tag } = this.state;
 
-    if (editor) {
+    if (!editor) {
       return;
     }
     return (
@@ -140,7 +140,7 @@ class WalletForm extends Component {
             type="button"
             onClick={ this.saveExpensesBtn }
           >
-            Adicionar despesa
+            "Editar despesa
 
           </button>
         </form>
@@ -154,9 +154,9 @@ const mapStateToProps = (globalState) => ({
   editor: globalState.wallet.editor,
 });
 
-WalletForm.propTypes = {
+EditForm.propTypes = {
   dispatch: PropTypes.func.isRequired,
   currencies: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-export default connect(mapStateToProps)(WalletForm);
+export default connect(mapStateToProps)(EditForm);
