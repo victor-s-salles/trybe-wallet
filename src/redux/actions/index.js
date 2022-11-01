@@ -47,12 +47,7 @@ export const receiveExpensesSuccess = (currencyList) => ({
   payload: currencyList,
 });
 
-export const saveExpenses = (payload) => {
-  //   console.log(dispatch);
-  console.log(payload);
-
-  return {
-    type: SAVEEXPENSES,
-    payload,
-  };
-};
+export const saveExpenses = (payload) => ({
+  type: SAVEEXPENSES,
+  payload,
+});
