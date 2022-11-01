@@ -1,4 +1,5 @@
-import { REQUEST_CURRENCY, RECEIVE_CURRENCY_SUCCESS, SAVEEXPENSES } from '../actions';
+import { REQUEST_CURRENCY, RECEIVE_CURRENCY_SUCCESS,
+  SAVEEXPENSES, REMOVEEXPENSES } from '../actions';
 
 const initialState = {
   currencies: [], // array de string
@@ -25,6 +26,16 @@ function walletReducer(state = initialState, action) {
       ...state,
       expenses: [...state.expenses, action.payload],
     };
+  case REMOVEEXPENSES: {
+    const ids = state.expenses.map((ele) => (ele.id));
+    const index = ids.indexOf(action.payload);
+    const newExpenses = [...state.expenses];
+    newExpenses.splice(index, 1);
+    return {
+      ...state,
+      expenses: newExpenses,
+    };
+  }
 
   default:
     return state;
