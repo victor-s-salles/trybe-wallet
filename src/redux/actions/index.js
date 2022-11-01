@@ -38,3 +38,21 @@ export const fetchCurrency = async (dispatch) => {
 };
 
 export const actionFetchCurrencyn = () => fetchCurrency;
+// ------------------------------------------
+
+export const SAVEEXPENSES = 'SAVEEXPENSES';
+
+export const receiveExpensesSuccess = (currencyList) => ({
+  type: RECEIVE_CURRENCY_SUCCESS,
+  payload: currencyList,
+});
+
+export const saveExpenses = (payload) => {
+  //   console.log(dispatch);
+  console.log(payload);
+
+  return {
+    type: SAVEEXPENSES,
+    payload,
+  };
+};
