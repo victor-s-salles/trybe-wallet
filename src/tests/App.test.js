@@ -36,7 +36,7 @@ describe('Testa a pagina de login', () => {
     expect(history.location.pathname).toBe('/carteira');
   });
 });
-describe('Testa a pagina da cateira', () => {
+describe('Testa a pagina da carteira', () => {
   test('se os elementos são rederizados corrtamente', () => {
     const initialState = {
       user: {
@@ -46,7 +46,6 @@ describe('Testa a pagina da cateira', () => {
 
     renderWithRouterAndRedux(<App />, { initialState, initialEntries: ['/carteira'] });
 
-    // act(() => { history.push('/carteira'); });
     const title = screen.getByRole('heading', { name: 'TrybeWallet', level: 1 });
     expect(title).toBeInTheDocument();
 
@@ -64,5 +63,32 @@ describe('Testa a pagina da cateira', () => {
 
     const tag = screen.getByLabelText('Tipo:');
     expect(tag).toBeInTheDocument();
+  });
+});
+
+describe('Testa a mecanica da pagimna carteira', () => {
+  test('se os elementos são rederizados corrtamente', () => {
+    const initialState = {
+      user: {
+        email: 'email@test.com',
+      },
+    };
+
+    renderWithRouterAndRedux(<App />, { initialState, initialEntries: ['/carteira'] });
+
+    const value = screen.getByLabelText('Valor da despesa:');
+    expect(value).toBeInTheDocument();
+    userEvent.type(value, 512);
+
+    const describe = screen.getByLabelText('Descrição:');
+    expect(describe).toBeInTheDocument();
+    userEvent.type(describe, 'Teste de valor');
+
+    const btnADD = screen.getByRole('button', { name: 'Adicionar despesa' });
+    expect(btnADD).toBeInTheDocument();
+    userEvent.click(btnADD);
+
+    const tabValue = screen.findByText(512);
+    expect(tabValue).toBeInTheDocument();
   });
 });
