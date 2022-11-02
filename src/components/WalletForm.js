@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { actionFetchCurrencyn, saveExpenses,
   modifyExpenses, editModeOFF } from '../redux/actions';
 import getCurrencyList from '../services/currencyAPI';
+import '../CSS/WalletForm.css';
 
 class WalletForm extends Component {
   constructor() {
@@ -91,91 +92,96 @@ class WalletForm extends Component {
     const { value, description, currency, method, tag } = this.state;
 
     return (
-      <div>
-        <form action="">
-          <label htmlFor="value">
-            Valor da despesa:
-            <input
-              id="value"
-              name="value"
-              type="number"
-              data-testid="value-input"
-              onChange={ this.handleChange }
-              value={ value }
-            />
-          </label>
+      <div className="WalletFormPrincipalDiv">
+        <div className="WalletFormSecondDiv">
+          <form action="">
+            <div className="WalletFormLine">
+              <label htmlFor="description" className="WalletFormDescription">
+                Descrição da despesa:
+                <input
+                  id="description"
+                  name="description"
+                  type="text"
+                  data-testid="description-input"
+                  onChange={ this.handleChange }
+                  value={ description }
+                />
+              </label>
+              <label htmlFor="tag" className="WalletFormCategory">
+                Categoria da despesa:
+                <select
+                  name="tag"
+                  id="tag"
+                  data-testid="tag-input"
+                  onChange={ this.handleChange }
+                  value={ tag }
+                >
+                  <option value="Alimentação">Alimentação</option>
+                  <option value="Lazer">Lazer</option>
+                  <option value="Trabalho">Trabalho</option>
+                  <option value="Transporte">Transporte</option>
+                  <option value="Saúde">Saúde</option>
+                </select>
+              </label>
+            </div>
+            <div className="WalletFormLine">
+              <label htmlFor="value" className="WalletFormValue">
+                Valor:
+                <input
+                  id="value"
+                  name="value"
+                  type="number"
+                  data-testid="value-input"
+                  onChange={ this.handleChange }
+                  value={ value }
+                />
+              </label>
+              <label htmlFor="method" className="WalletFormPayment">
+                Método de pagamento:
+                <select
+                  name="method"
+                  id="method"
+                  data-testid="method-input"
+                  onChange={ this.handleChange }
+                  value={ method }
+                >
+                  <option value="Dinheiro">Dinheiro</option>
+                  <option value="Cartão de crédito">Cartão de crédito</option>
+                  <option value="Cartão de débito">Cartão de débito</option>
+                </select>
+              </label>
+              <label htmlFor="currency" className="WalletFormCurrency">
+                Moeda:
+                <select
+                  name="currency"
+                  id="currency"
+                  data-testid="currency-input"
+                  onChange={ this.handleChange }
+                  value={ currency }
+                >
+                  {currencies.map((item) => (
+                    <option value={ item } key={ item }>
+                      {item}
+                    </option>
+                  ))}
+                </select>
 
-          <label htmlFor="description">
-            Descrição:
-            <input
-              id="description"
-              name="description"
-              type="text"
-              data-testid="description-input"
-              onChange={ this.handleChange }
-              value={ description }
-            />
-          </label>
-
-          <label htmlFor="currency">
-            Moeda:
-            <select
-              name="currency"
-              id="currency"
-              data-testid="currency-input"
-              onChange={ this.handleChange }
-              value={ currency }
-            >
-              {currencies.map((item) => (
-                <option value={ item } key={ item }>
-                  {item}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          <label htmlFor="method">
-            Método:
-            <select
-              name="method"
-              id="method"
-              data-testid="method-input"
-              onChange={ this.handleChange }
-              value={ method }
-            >
-              <option value="Dinheiro">Dinheiro</option>
-              <option value="Cartão de crédito">Cartão de crédito</option>
-              <option value="Cartão de débito">Cartão de débito</option>
-            </select>
-          </label>
-
-          <label htmlFor="tag">
-            Tipo:
-            <select
-              name="tag"
-              id="tag"
-              data-testid="tag-input"
-              onChange={ this.handleChange }
-              value={ tag }
-            >
-              <option value="Alimentação">Alimentação</option>
-              <option value="Lazer">Lazer</option>
-              <option value="Trabalho">Trabalho</option>
-              <option value="Transporte">Transporte</option>
-              <option value="Saúde">Saúde</option>
-            </select>
-          </label>
-          {!editor && (
-            <button type="button" onClick={ this.saveExpensesBtn }>
-              Adicionar despesa
-            </button>
-          )}
-          {editor && (
-            <button type="button" onClick={ this.editExpensesBtn }>
-              Editar despesa
-            </button>
-          )}
-        </form>
+              </label>
+            </div>
+            <div className="WalletFormButtonsDiv">
+              {!editor && (
+                <button type="button" onClick={ this.saveExpensesBtn }>
+                  Adicionar despesa
+                </button>
+              )}
+              {editor && (
+                <button type="button" onClick={ this.editExpensesBtn }>
+                  Editar despesa
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

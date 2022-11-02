@@ -1,0 +1,56 @@
+.HeaderPrincipalDiv {
+  display: flex;
+  justify-content: center;
+
+  /* margin-top: 3vh; */
+}
+
+.HeaderSecondlDiv {
+  background-color: white;
+  box-shadow: -4px 9px 13px rgba(5, 18, 54, 0.4);
+
+  /* border: 2px solid black; */
+  display: flex;
+  justify-content: space-around;
+  padding-top: 3vh;
+  width: 80%;
+  z-index: 1;
+}
+
+.HeaderDivInfos {
+  align-items: center;
+  display: flex;
+}
+
+.HeaderDivInfos img {
+  height: 40px;
+  margin-right: 10px;
+  width: 40px;
+}
+
+.HeaderH3Total {
+  color: #003be5;
+  font-family: Epilogue;
+  font-size: 1.2em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 14px;
+}
+
+.HeaderTitleTotal {
+  color: #003be5;
+  font-family: Epilogue;
+  font-size: 1.2em;
+  font-weight: 800;
+  line-height: 14px;
+  margin-right: 6px;
+}
+
+.HeaderH3Email {
+  color: #2fc18c;
+  font-family: Epilogue;
+  font-size: 1.2em;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 14px;
+}

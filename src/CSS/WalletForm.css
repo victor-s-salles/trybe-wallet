@@ -1,0 +1,134 @@
+.WalletFormPrincipalDiv {
+  display: flex;
+  justify-content: center;
+}
+
+.WalletFormSecondDiv {
+  background-color: white;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  /* border: 2px solid black; */
+  box-shadow: -4px 9px 13px rgba(5, 18, 54, 0.4);
+  display: flex;
+  height: 25vh;
+  justify-content: center;
+  width: 80%;
+  z-index: 1;
+}
+
+.WalletFormSecondDiv form {
+  width: 88%;
+}
+
+.WalletFormDescription {
+  color: #003be5;
+  font-family: Epilogue;
+  font-size: 1.5em;
+
+}
+
+.WalletFormDescription input {
+  border: 1px solid #003be5;
+  border-radius: 5px;
+  height: 30px;
+  margin-left: 10px;
+  width: 288.86px;
+}
+
+.WalletFormCategory {
+  color: #003be5;
+  font-family: Epilogue;
+  font-size: 1.5em;
+  margin-left: 20px;
+}
+
+.WalletFormCategory select {
+  background-color: white;
+  border: 1px solid #003be5;
+  border-radius: 5px;
+  color: #003be5;
+  font-family: Epilogue;
+  font-size: 0.7em;
+  height: 30px;
+  margin-left: 10px;
+  margin-right: 50px;
+  padding: 0 10px;
+
+}
+
+.WalletFormLine {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.WalletFormValue {
+  color: #003be5;
+  font-family: Epilogue;
+  font-size: 1.5em;
+  margin-left: 20px;
+}
+
+.WalletFormValue input {
+  border: 1px solid #003be5;
+  border-radius: 5px;
+  height: 30px;
+  margin-left: 10px;
+  width: 158px;
+}
+
+.WalletFormPayment {
+  color: #003be5;
+  font-family: Epilogue;
+  font-size: 1.5em;
+  margin-left: 20px;
+}
+
+.WalletFormPayment select {
+  background-color: white;
+  border: 1px solid #003be5;
+  border-radius: 5px;
+  color: #003be5;
+  font-family: Epilogue;
+  font-size: 0.7em;
+  height: 30px;
+  padding: 0 10px;
+  width: 228px;
+}
+
+.WalletFormCurrency {
+  color: #003be5;
+  font-family: Epilogue;
+  font-size: 1.5em;
+  margin-left: 20px;
+}
+
+.WalletFormCurrency select {
+  background-color: white;
+  border: 1px solid #003be5;
+  border-radius: 5px;
+  color: #003be5;
+  font-family: Epilogue;
+  font-size: 0.7em;
+  height: 30px;
+  padding: 0 10px;
+  width: 91px;
+}
+
+.WalletFormButtonsDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.WalletFormButtonsDiv button {
+  background: #2fc18c;
+  border: 1px solid #2fc18c;
+  border-radius: 5px;
+  color: white;
+  font-family: Epilogue;
+  font-size: 1.2em;
+  height: 40px;
+  width: 330px;
+}
