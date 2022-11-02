@@ -1,0 +1,74 @@
+.Login-PrincipalDiv {
+  align-items: center;
+  background-color: #23f031;
+  background-image: url('../imgs/foto\ fundo.png');
+  background-size: cover;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  mix-blend-mode: luminosity;
+  width: 100vw;
+}
+
+.Login-Second-Div {
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: -4px 9px 13px rgba(3, 107, 82, 0.3);
+  display: flex;
+  flex-direction: column;
+  height: 45%;
+  justify-content: center;
+  width: 40%;
+
+}
+
+.Login-Second-Div img {
+  margin-bottom: 40px;
+  scale: 1.2;
+}
+
+.Login-Second-Div input {
+  background: #fff;
+  border: 1px solid #003be5;
+  border-color: #003be5;
+  border-radius: 5px;
+  height: 40px;
+  margin: 6px;
+  width: 330px;
+}
+
+.Login-Second-Div input::placeholder {
+  color: #003be5;
+  padding-left: 10px;
+}
+
+.Login-Second-Div button {
+  background: #003be5;
+  border: 1px solid #003be5;
+  border-radius: 5px;
+  color: white;
+  height: 40px;
+  margin: 6px;
+  width: 335px;
+}
+
+.Login-InputDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+@media ( max-width : 950px ) {
+
+  .Login-Second-Div {
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: -4px 9px 13px rgba(3, 107, 82, 0.3);
+    display: flex;
+    flex-direction: column;
+    height: 45%;
+    justify-content: center;
+    width: 90%;
+
+  } }
