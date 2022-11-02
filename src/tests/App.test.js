@@ -66,29 +66,66 @@ describe('Testa a pagina da carteira', () => {
   });
 });
 
-describe('Testa a mecanica da pagimna carteira', () => {
-  test('se os elementos são rederizados corrtamente', () => {
-    const initialState = {
-      user: {
-        email: 'email@test.com',
-      },
-    };
+describe('Testa a mecanica da pagina carteira', () => {
+  test('se ao entrar na pagina e possivel adicionar um despesa', async () => {
+    renderWithRouterAndRedux(<App />);
+    const loginBTN = screen.queryByText('Entrar');
+    const email = screen.getByLabelText('Email:');
+    const password = screen.getByLabelText('Senha:');
+    userEvent.type(email, 'teste@testes.com');
+    userEvent.type(password, '123456');
+    expect(loginBTN).toBeEnabled();
+    userEvent.click(loginBTN);
 
-    renderWithRouterAndRedux(<App />, { initialState, initialEntries: ['/carteira'] });
+    const inputValue = screen.getByLabelText('Valor da despesa:');
+    userEvent.type(inputValue, '105');
+    const inputDescribe = screen.getByLabelText('Descrição:');
+    userEvent.type(inputDescribe, 'Cento e cinco');
 
-    const value = screen.getByLabelText('Valor da despesa:');
-    expect(value).toBeInTheDocument();
-    userEvent.type(value, 512);
+    const addBTN = screen.queryByText('Adicionar despesa');
+    userEvent.click(addBTN);
 
-    const describe = screen.getByLabelText('Descrição:');
-    expect(describe).toBeInTheDocument();
-    userEvent.type(describe, 'Teste de valor');
+    const tableValue = await screen.findByRole('cell', { name: '105.00' });
+    expect(tableValue).toBeInTheDocument();
+    const tableDescribe = await screen.findByRole('cell', { name: 'Cento e cinco' });
+    expect(tableDescribe).toBeInTheDocument();
 
-    const btnADD = screen.getByRole('button', { name: 'Adicionar despesa' });
-    expect(btnADD).toBeInTheDocument();
-    userEvent.click(btnADD);
+    const editBTN = await screen.findByText('Editar');
+    userEvent.click(editBTN);
 
-    const tabValue = screen.findByText(512);
-    expect(tabValue).toBeInTheDocument();
+    userEvent.type(inputValue, '210');
+    userEvent.type(inputDescribe, 'Duzentos e dez');
+
+    const inputCoin = screen.getByLabelText('Moeda:');
+    const inputTag = screen.getByLabelText('Tipo:');
+    userEvent.selectOptions(
+      inputCoin,
+      await screen.findByText('BTC'),
+
+    );
+    userEvent.selectOptions(
+      inputTag,
+      screen.getByText('Trabalho'),
+
+    );
+
+    const confirmEditBTN = screen.queryByText('Editar despesa');
+    userEvent.click(confirmEditBTN);
+
+    const tableNewValue = await screen.findByRole('cell', { name: '210.00' });
+    expect(tableNewValue).toBeInTheDocument();
+    const tableNewDescribe = await screen.findByRole('cell', { name: 'Duzentos e dez' });
+    expect(tableNewDescribe).toBeInTheDocument();
+
+    const tableNewCoin = await screen.findByRole('cell', { name: 'Bitcoin/Real Brasileiro' });
+    expect(tableNewCoin).toBeInTheDocument();
+    const tableNewTag = await screen.findByRole('cell', { name: 'Trabalho' });
+    expect(tableNewTag).toBeInTheDocument();
+
+    const deleteBTN = await screen.findByTestId('delete-btn');
+    userEvent.click(deleteBTN);
+
+    expect(tableNewValue).not.toBeInTheDocument();
+    expect(tableNewDescribe).not.toBeInTheDocument();
   });
 });
