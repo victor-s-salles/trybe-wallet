@@ -1,5 +1,6 @@
 import { REQUEST_CURRENCY, RECEIVE_CURRENCY_SUCCESS,
-  SAVEEXPENSES, REMOVEEXPENSES } from '../actions';
+  SAVEEXPENSES, REMOVEEXPENSES, EDITMODEON,
+  MODIFYEXPENSES, EDITMODEOFF } from '../actions';
 
 const initialState = {
   currencies: [], // array de string
@@ -20,7 +21,6 @@ function walletReducer(state = initialState, action) {
       currencies: action.payload,
       isFetching: false,
     };
-
   case SAVEEXPENSES:
     return {
       ...state,
@@ -36,7 +36,28 @@ function walletReducer(state = initialState, action) {
       expenses: newExpenses,
     };
   }
-
+  case EDITMODEON:
+    return {
+      ...state,
+      editor: true,
+      idToEdit: action.payload,
+    };
+  case EDITMODEOFF:
+    return {
+      ...state,
+      editor: false,
+      idToEdit: action.payload,
+    };
+  case MODIFYEXPENSES: {
+    const ids = state.expenses.map((ele) => (ele.id));
+    const index = ids.indexOf(action.payload.id);
+    const newExpenses = [...state.expenses];
+    newExpenses[index] = action.payload;
+    return {
+      ...state,
+      expenses: newExpenses,
+    };
+  }
   default:
     return state;
   }
